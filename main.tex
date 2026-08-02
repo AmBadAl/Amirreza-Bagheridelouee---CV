@@ -1,651 +1,232 @@
-%-------------------------
-% Resume in Latex
-% Author : Aras Gungore
-% License : MIT
-%------------------------
-
 \documentclass[letterpaper,11pt]{article}
 
-\usepackage{latexsym}
-\usepackage[empty]{fullpage}
-\usepackage{multicol}
-\usepackage{enumitem}
-
-\usepackage{titlesec}
-\usepackage{marvosym}
-\usepackage[usenames,dvipsnames]{color}
-\usepackage{verbatim}
-\usepackage{enumitem}
-\usepackage[hidelinks]{hyperref}
-
-\usepackage{fancyhdr}
+\usepackage[T1]{fontenc}
 \usepackage[english]{babel}
+\usepackage[margin=0.62in]{geometry}
+\usepackage{enumitem}
 \usepackage{tabularx}
-\usepackage{hyphenat}
-\usepackage{fontawesome}
-\usepackage{tabto}
-\usepackage{csquotes}
+\usepackage{titlesec}
 \usepackage[dvipsnames]{xcolor}
-% \usepackage{xcolor}      % for colors
-% \usepackage{titlesec}    % for customizing section titles
+\usepackage[hidelinks]{hyperref}
+\usepackage{multicol}
 
-% Define your preferred myblue (you can tweak the RGB values)
-\definecolor{myblue}{RGB}{40, 60, 180}
-% \input{glyphtounicode}
+\input{glyphtounicode}
+\pdfgentounicode=1
 
+\definecolor{cvblue}{RGB}{40,60,180}
 
-%---------- FONT OPTIONS ----------
-% sans-serif
-% \usepackage[sfdefault]{FiraSans}
-% \usepackage[sfdefault]{roboto}
-% \usepackage[sfdefault]{noto-sans}
-% \usepackage[default]{sourcesanspro}
+\hypersetup{
+  pdftitle={Amirreza Bagheridelouee - Curriculum Vitae},
+  pdfauthor={Amirreza Bagheridelouee},
+  pdfsubject={Academic curriculum vitae},
+  pdfkeywords={economics, industrial organization, market design, finance, machine learning}
+}
 
-% serif
-% \usepackage{CormorantGaramond}
-% \usepackage{charter}
-
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\tabcolsep}{0pt}
 \setlength{\multicolsep}{0pt}
-\setlist[itemize]{leftmargin=0.55cm}
-
-
-\pagestyle{fancy}
-\fancyhf{} % clear all header and footer fields
-\fancyfoot{}
-\renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
-
-% Adjust margins
-\addtolength{\oddsidemargin}{-0.5in}
-\addtolength{\evensidemargin}{-0.5in}
-\addtolength{\textwidth}{1in}
-\addtolength{\topmargin}{-.5in}
-\addtolength{\textheight}{1.0in}
-
-\urlstyle{same}
-
 \raggedbottom
 \raggedright
-\setlength{\tabcolsep}{0in}
+\urlstyle{same}
 
-% Sections formatting
-% \titleformat{\section}{
-%   \vspace{-4pt}\scshape\raggedright\large
-% }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
-\titleformat{\section}{
-  \vspace{-4pt}\color{myblue}\scshape\raggedright\large
-}{}{0em}{}[\color{myblue}\titlerule \vspace{-5pt}]
+\titleformat{\section}
+  {\vspace{-2pt}\color{cvblue}\scshape\raggedright\large}
+  {}{0pt}{}[\color{cvblue}\titlerule\vspace{-5pt}]
+\titlespacing*{\section}{0pt}{7pt}{5pt}
 
-% Ensure that generate pdf is machine readable/ATS parsable
-% \pdfgentounicode=1
-
-%-------------------------
-% Custom commands
-\newenvironment{publications}{
-\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} p{.985\textwidth}}
-\\[-2ex]}
-{\end{tabular*}\vspace{-4pt}}
-
-\newcommand{\pub}[1]{{#1}\\ \\[-2ex]}
-
-\newcommand{\resumeItem}[1]{
-  \item\small{
-    {#1 \vspace{-2pt}}
-  }
+\newcommand{\entry}[4]{
+  \begin{tabularx}{\textwidth}{@{}Xr@{}}
+    \textbf{#1} & #2 \\
+    \textit{#3} & \textit{#4}
+  \end{tabularx}\vspace{-3pt}
 }
 
-
-\newcommand{\resumeSubheading}[4]{
-  \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & #2 \\
-      \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-7pt}
+\newcommand{\projectentry}[2]{
+  \begin{tabularx}{\textwidth}{@{}Xr@{}}
+    \textbf{#1} & #2
+  \end{tabularx}\vspace{-5pt}
 }
 
+\newenvironment{cvitems}
+  {\begin{itemize}[leftmargin=0.18in,itemsep=0pt,topsep=2pt,parsep=0pt,partopsep=0pt]}
+  {\end{itemize}\vspace{-2pt}}
 
-\newcommand{\resumeSubSubheading}[2]{
-    \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \textit{\small#1} & \textit{\small #2} \\
-    \end{tabular*}\vspace{-7pt}
-}
-
-
-\newcommand{\resumeEducationHeading}[6]{
-  \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & #2 \\
-      \textit{\small#3} & \textit{\small #4} \\
-      \textit{\small#5} & \textit{\small #6} \\
-    \end{tabular*}\vspace{-5pt}
-}
-
-
-\newcommand{\resumeProjectHeading}[2]{
-    \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \small#1 & #2 \\
-    \end{tabular*}\vspace{-7pt}
-}
-
-
-\newcommand{\resumeOrganizationHeading}[4]{
-  \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & \textit{\small #2} \\
-      \textit{\small#3}
-    \end{tabular*}\vspace{-7pt}
-}
-
-\newcommand{\resumeSubItem}[1]{\resumeItem{#1}\vspace{-4pt}}
-
-\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
-
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
-
-%-------------------------------------------
-%%%%%%  RESUME STARTS HERE  %%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+\newcommand{\advisor}[1]{\textit{#1}}
+\newcommand{\link}[2]{\href{#1}{\textcolor{cvblue}{#2}}}
 
 \begin{document}
 
-%---------- HEADING ----------
-
 \begin{center}
-    \textbf{\Huge \scshape Amirreza Bagheridelouee} \\ \vspace{5pt}
-    \small
-    \faMobile \hspace{.5pt} \href{tel:989155044842}{+1 (650) 444-4155}
-    $|$
-    \faAt \hspace{.5pt} \href{mailto:bagheri@stanford.edu}{bagheri@stanford.edu}
-    $|$
-    \faGlobe \hspace{0.5pt} \href{https://ambadal.github.io/}{\textcolor{myblue}{Website}}
-    $|$
-    \faLinkedinSquare \hspace{.5pt} \href{https://www.linkedin.com/in/amirreza-bagheridelouee-265557146}{\textcolor{myblue}{LinkedIn}}
-    $|$
-    \faGithub \hspace{.5pt} \href{https://github.com/AmBadAl}{\textcolor{myblue}{GitHub}}
-    $|$
-    \faMapMarker \hspace{.5pt} \href{https://maps.app.goo.gl/fx19HyH6CDEwoYU98}{Stanford, CA}
-    \vspace{-3mm}
+  {\Huge\textbf{Amirreza Bagheridelouee}}\\[5pt]
+  \small
+  \href{tel:+16504444155}{+1 (650) 444-4155}
+  \enspace$|$\enspace
+  \href{mailto:amirbd@wharton.upenn.edu}{amirbd@wharton.upenn.edu}
+  \enspace$|$\enspace
+  \link{https://ambadal.github.io/}{Website}
+  \enspace$|$\enspace
+  \link{https://www.linkedin.com/in/amirreza-bagheridelouee-265557146}{LinkedIn}
+  \enspace$|$\enspace
+  \link{https://github.com/AmBadAl}{GitHub}
+  \enspace$|$\enspace
+  Philadelphia, PA
 \end{center}
+\vspace{-8pt}
 
+\section{Education}
 
+\entry
+  {Stanford Graduate School of Business}{Sep 2024 -- Jun 30, 2026}
+  {Predoctoral Research Fellow (Non-matriculated Student); \link{https://drive.google.com/file/d/1kb_k2UNL9kZQXFPfv0aMRYIPIigM8STo/view?usp=sharing}{Transcript}}
+  {Stanford, CA}
+\begin{cvitems}
+  \item \textbf{Graduate coursework:} Microeconomic Analysis I; Econometrics I--III; Game Theory, Data Science \& AI; Reinforcement Learning; Convex Optimization I.
+\end{cvitems}
 
-%----------- EDUCATION -----------
-\section{\textcolor{myblue}{Education}}
-  \vspace{3pt}
-  \resumeSubHeadingListStart
-    
-    \resumeSubheading
-    {Stanford Graduate School of Business, \normalfont Stanford, CA}{\normalfont Sep 2024 \textbf{--} Present \vspace{0.5mm}}{\hspace{0.15cm} \normalfont Predoctoral Research Fellow (Non-matriculated Student); \href{https://drive.google.com/file/d/1kb_k2UNL9kZQXFPfv0aMRYIPIigM8STo/view?usp=sharing}{\textcolor{myblue}{Transcript}}}{}\vspace{1mm}
-    \resumeItemListStart
-        \resumeItem{\textbf{PhD Core:} 
-        Microeconomic Analysis I (MGTECON 600), Intermediate Econometrics I, II, III (ECON 270-272)}
-        \resumeItem{\textbf{Graduate:} Reinforcement Learning (CS 234), Convex Optimization I (EE 364A)}
-        % MGTECON 600: Microeconomics Analysis I (PhD), EE364A: Convex Optimization I (Graduate), ECON 270-272: Intermediate Econometrics I, II, III (PhD)}
-    \resumeItemListEnd
+\entry
+  {Sharif University of Technology}{Sep 2019 -- Jul 2024}
+  {B.Sc. in Computer Engineering, Minor in Economics; GPA: 3.90/4.00}
+  {Tehran, Iran}
+\begin{cvitems}
+  \item \textbf{Thesis:} \link{https://drive.google.com/drive/folders/1hKUnhgeF74_QdofnvVOsgK7rcKDeilMH?usp=sharing}{Metric Distortion Under Public-Spirited Voting}.
+  \item \textbf{Selected coursework:} Machine Learning; Social and Economic Networks; Econometrics; Industrial Organization; Financial Machine Learning; Financial Engineering.
+\end{cvitems}
 
-    \resumeSubheading
-    {Sharif University of Technology, \normalfont Tehran, Iran}{\normalfont Sep 2019 \textbf{--} Jul 2024 \vspace{0.5mm}}{\hspace{0.15cm} \normalfont B.Sc. in Computer Engineering and Minor in Economics   
-    (GPA: 3.90/4.00);  
-    \href{https://drive.google.com/file/d/1WJSjQwN7rH9XDqTEst-5WVKbvuHeijN_/view?usp=sharing}{\textcolor{myblue}{Transcript}} 
-    $|$ \href{https://drive.google.com/file/d/1SzvwgPHEfoMVbOWEBU5zCxNnTy2WPUqA/view?usp=sharing}{\textcolor{myblue}{Thesis}}
-    }{}\vspace{1mm}
-    \resumeItemListStart
-        \resumeItem{\textbf{Math:} Calculus I-II, Linear Algebra, Differential Equations, Probability and Statistics, Numerical Computation}
-        \resumeItem{\textbf{Computer Science:} Advanced Programming, Discrete Structures, Data Structures and Algorithms, Design of Algorithms, Game Theory, Advanced Information Retrieval, Machine Learning, Social and Economic Networks
-        % , Theory of Languages and Automata, Computer Simulation, Signals and Systems
-        }
-        \resumeItem{\textbf{Economics:} Microeconomics, Macroeconomics, Econometrics, Intro to IO, Public Economics, Neuroeconomics}
-        \resumeItem{\textbf{Finance:} Financial Economics, Financial Machine Learning, Financial Engineering}
-    \resumeItemListEnd
+\entry
+  {London School of Economics and Political Science}{Jul 2023 -- Aug 2023}
+  {Summer School; Financial Risk Analysis and Advanced Corporate Finance; \link{https://drive.google.com/file/d/1XI6XzQQCjcciT4FuboTKURwQtCJLdq4m/view?usp=sharing}{Transcript}}
+  {London, UK}
 
-    % \resumeItemListStart
-    %     \resumeItem{\textbf{Relevant coursework:} Calculus I-II, Matrix Theory, Differential Equations, Materials Science, Electrical Circuits I-II, Digital System Design, Numerical Methods, Probability Theory, Electronics I-II, Signals and Systems, Electromagnetic Field Theory, Energy Conversion, System Dynamics and Control, Communication Engineering}
-    % \resumeItemListEnd
-
-    % \resumeSubheading
-    % {Summer School in Finance}{\normalfont Jul 2023 \textbf{--} Aug 2023 \vspace{0.5mm}}{\hspace{5pt} \normalfont London School of Economics and Political Sciences (LSE);   \textbf{GPA: A+} }{\normalfont London, United Kingdom}\vspace{1mm}
-    
-    % \resumeSubheading
-    %   {High School Diploma in Mathematics and Physics
-    %   % \normalfont{(Admission rate: 0.85\%)}
-    %   }{\normalfont Sep 2016 \textbf{--} Jun 2019 \vspace{0.5mm}}
-    %   {\hspace{5pt} \normalfont Hashemi-Nejad High School (Sampad of Mashhad); \textbf{GPA: 19.39/20.00}}{\normalfont Mashhad, Iran}
-    \resumeSubheading
-    {London School of Economics and Political Sciences (LSE), \normalfont London, UK}{\normalfont Jul 2023 \textbf{--} Aug 2023 \vspace{0.5mm}}{\hspace{0.15cm} \normalfont Summer School Student;   \href{https://drive.google.com/file/d/1XI6XzQQCjcciT4FuboTKURwQtCJLdq4m/view?usp=sharing}{\textcolor{myblue}{Transcript}}}{}
-    \resumeItemListStart
-        \resumeItem{\textbf{Coursework:} Analysis and Management of Financial Risk (FM202), Advanced Corporate Finance (FM350)}
-    \resumeItemListEnd
-  \resumeSubHeadingListEnd
-
-%----------- RESEARCH INTERESTS -----------
-
-% \section{Research Interests}
-%   \resumeSubHeadingListStart
-%   \item{\begin{tabularx}{\textwidth}{m{6cm} m{6cm} m{6cm}}
-%   Financial Economics & Behavioral Finance & Quantitative Finance \\ Economic Theory & Game Theory & Social and Economic Networks
-%     \end{tabularx} }\vspace{-5mm}
-%   \resumeSubHeadingListEnd
-
-%----------- Publications -----------
-\vspace{-5mm}
 \section{Publications}
-    \vspace{-2pt}
-    \hspace{6pt}
-    \begin{publications}
-        \pub{\textbf{Amirreza Bagheridelouee}, Marzieh Nilipour, Masoud Seddighin, Maziar Shamsipour, \enquote{Metric Distortion Under Public-Spirited Voting}, \textit{Proceedings of the 23rd International Conference on Autonomous Agents and Multiagent Systems, (\href{https://dl.acm.org/doi/10.5555/3635637.3663088}{\textcolor{myblue}{AAMAS'24}})}, pages 2144–2146, 2024.}
-    \end{publications} \vspace{-12pt}    
 
-%----------- WORK EXPERIENCE -----------
+\small
+\textbf{Amirreza Bagheridelouee}, Marzieh Nilipour, Masoud Seddighin, and Maziar Shamsipour.
+``Metric Distortion Under Public-Spirited Voting.''
+\textit{Proceedings of the 23rd International Conference on Autonomous Agents and Multiagent Systems}
+(\link{https://dl.acm.org/doi/10.5555/3635637.3663088}{AAMAS 2024}), pp. 2144--2146.
+\normalsize
 
-\section{Predoctoral Research Experience (Stanford GSB)}
-  \vspace{3pt}
-  \resumeSubHeadingListStart
+\section{Research Experience}
 
-    \resumeSubheading
-    {FIFA Ticketing, \normalfont \small (\href{https://gsb-faculty.stanford.edu/paulo-somaini/}{\textcolor{myblue}{Prof. Paulo Somaini}})}{\normalfont Sep 2025 \textbf{--} Present}{}{}\vspace{-4mm}
-    \resumeItemListStart
-        \resumeItem{Scraped digital items data of FIFA collectibles marketplace and blockchain transactions of \href{https://explorer.fifachain.io/}{\textcolor{myblue}{Fifachain}}}
-        % \resumeItem{Supervisor: \href{https://gsb-faculty.stanford.edu/paulo-somaini/}{\textit{\textcolor{myblue}{Prof. Paulo Somaini}}}}
-    \resumeItemListEnd
+\entry
+  {Researcher, The Wharton School}{Jul 1, 2026 -- Present}
+  {University of Pennsylvania}
+  {Philadelphia, PA}
 
-    % \vspace{15pt}
-    \resumeSubheading
-    {Congestion Pricing and Carpooling,  \normalfont \small (\href{https://web.stanford.edu/~ost/}{\textcolor{myblue}{Prof. Michael Ostrovsky}})}{\normalfont Jul 2025 \textbf{--} Present}{}{}\vspace{-4mm}
-    \resumeItemListStart
-        \resumeItem{Collected and organized data of the trips in Manhattan's CBD using Replica and Google Maps API}
-        \resumeItem{Literature review on the impacts of parking fees and congestion pricing on carpooling (\href{https://www.nber.org/papers/w34261}{\textcolor{myblue}{Paper}})}
-        % \resumeItem{Supervisor: \href{https://web.stanford.edu/~ost/}{\textit{\textcolor{myblue}{Prof. Michael Ostrovsky}}}}
-    \resumeItemListEnd
-    % \vspace{-1mm}
+\entry
+  {Predoctoral Research Fellow, Stanford Graduate School of Business}{Sep 2024 -- Jun 30, 2026}
+  {Selected research projects}
+  {Stanford, CA}
 
-    \resumeSubheading
-    {Modeling Locations of Power Plants, Transmission Lines, and Data Centers}{\normalfont Jul 2025 \textbf{--} Sep 2025}{}{}\vspace{-4mm}
-    \resumeItemListStart
-        \resumeItem{Developed a model using PowerModels.jl that predicts power generations using bid data and network specifications}
-        \resumeItem{Investigated and resolved the inconsistencies between ERCOT-SCED bid data and actual power generations}
-        \resumeItem{Supervisors: \href{https://web.stanford.edu/~ayurukog/}{\textcolor{myblue}{Prof. Ali Yurukoglu}} and \href{https://gsb-faculty.stanford.edu/omer-karaduman/}{\textcolor{myblue}{Prof. Omer Karaduman}}}
-    \resumeItemListEnd
-    % \vspace{-1mm}
+\projectentry{FIFA Ticketing --- \link{https://gsb-faculty.stanford.edu/paulo-somaini/}{Prof. Paulo Somaini}}{Sep 2025 -- Jun 30, 2026}
+\begin{cvitems}
+  \item Collected and analyzed marketplace and Fifachain transaction data for FIFA Collect, including 2026 World Cup ticket-related digital assets.
+\end{cvitems}
 
-    \resumeSubheading
-    {Port Substitution and Congestion in Container Ship Industry}{\normalfont Sep 2024 \textbf{--} Jun 2025}{}{}\vspace{-4mm}
-    \resumeItemListStart
-        \resumeItem{Implemented an algorithm to assign a unique ID to ships to correct their wrong/missing identifiers}
-        \resumeItem{Developed a pipeline to clean, merge, and benchmark the customs imports data and goods data}
-        \resumeItem{Developed a model to estimate trucking costs from underlying factors, accounting for fuel price and wage variations}
-        \resumeItem{Supervisors: \href{https://shoshanavasserman.com/}{\textcolor{myblue}{Prof. Shoshana Vasserman}} and \href{https://stephenredding.github.io/index.html}{\textcolor{myblue}{Prof. Stephen Redding}}}
-    \resumeItemListEnd
-    % \vspace{-1mm}
+\projectentry{Congestion Pricing and Carpooling --- \link{https://web.stanford.edu/~ost/}{Prof. Michael Ostrovsky}}{Jul 2025 -- Jun 30, 2026}
+\begin{cvitems}
+  \item Built trip-level datasets for Manhattan's central business district using Replica and Google Maps APIs to study carpooling responses to congestion pricing.
+  \item Synthesized evidence on how parking fees and congestion charges affect carpooling (\link{https://www.nber.org/papers/w34261}{paper}).
+\end{cvitems}
 
-    \resumeSubheading
-    {Generative AI in Equilibrium, \normalfont \small (\href{https://www.gsb.stanford.edu/faculty-research/faculty/samuel-goldberg}{\textcolor{myblue}{Prof. Samuel Goldberg}}) $|$  (\href{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5152649}{\textcolor{myblue}{Paper}})}{\normalfont Sep 2024 \textbf{--} Jun 2025}{}{}\vspace{-4mm}
-    \resumeItemListStart
-        \resumeItem{Implemented a text embedding model that uses the title + tags of images}
-        % after testing different embedding models and ways to combine title and/or tags}
-        \resumeItem{Difference-in-difference estimation of the GenAI treatment effects using propensity score matching}
-        \resumeItem{Implement and fine-tune a Random Forest model to predict sales of images using embeddings + keywords}
-        % \resumeItem{Supervisor: \href{https://www.gsb.stanford.edu/faculty-research/faculty/samuel-goldberg}{\textit{\textcolor{myblue}{Prof. Samuel Goldberg}}}}
-    \resumeItemListEnd
-    % \vspace{-1.5mm}
-  \resumeSubHeadingListEnd
+\projectentry{Power Plants, Transmission Lines, and Data Centers}{Jul 2025 -- Sep 2025}
+\begin{cvitems}
+  \item Developed a PowerModels.jl model to predict electricity generation from bid data and network constraints.
+  \item Diagnosed inconsistencies between ERCOT SCED bid data and realized generation. \advisor{Supervisors: \link{https://web.stanford.edu/~ayurukog/}{Prof. Ali Yurukoglu} and \link{https://gsb-faculty.stanford.edu/omer-karaduman/}{Prof. Omer Karaduman}.}
+\end{cvitems}
 
-\section{Other Experiences}
-  \vspace{3pt}
-  \resumeSubHeadingListStart
+\projectentry{Port Substitution and Congestion in the Container Shipping Industry}{Sep 2024 -- Jun 2025}
+\begin{cvitems}
+  \item Built a ship-identity resolution algorithm to correct missing and inconsistent vessel identifiers.
+  \item Developed reproducible pipelines to clean, merge, and benchmark customs-import and product datasets.
+  \item Estimated trucking costs from fuel-price and wage variation. \advisor{Supervisors: \link{https://shoshanavasserman.com/}{Prof. Shoshana Vasserman} and \link{https://stephenredding.github.io/}{Prof. Stephen Redding}.}
+\end{cvitems}
 
-    \resumeSubheading
-    {Research Assistant, \normalfont \small (\href{https://sites.google.com/view/masoudseddighin}{\textcolor{myblue}{Prof. Masoud Seddighin}}, Tehran Institute for Advanced Studies)}{\normalfont Aug 2023 \textbf{--} Aug 2024}{}{}\vspace{-4.5mm}
-    \resumeItemListStart
-        \resumeItem{Solved the lower/upper bound distortions of different voting rules under public-spirited setting}
-        % \resumeItem{Supervisor: \href{https://sites.google.com/view/masoudseddighin}{\textcolor{myblue}{Prof. Masoud Seddighin}}}
-    \resumeItemListEnd
-    % \resumeSubheading
-    %   {Summer School, \normalfont London School of Economics and Political Sciences (LSE)}{\normalfont Jul 2023 \textbf{--} Aug 2023}{}{}\vspace{-4.5mm}
-    %     \resumeItemListStart
-    %         \resumeItem{Enrolled in the following two courses and participated in professional skills workshops:}\\ \vspace{3pt}
-    %         {Analysis and Management of Financial Risk (FM202), Lecturers: \href{https://www.lse.ac.uk/finance/people/faculty/Chabakauri}{\textcolor{myblue}{Dr. Georgy Chabakauri}}, \href{https://www.lse.ac.uk/finance/people/faculty/Peng}{\textcolor{myblue}{Dr. Cameron Peng}}}
-    %         {Advanced Corporate Finance (FM350), Lecturers: \href{https://www.lse.ac.uk/finance/people/faculty/Gonzalez-Uribe}{\textcolor{myblue}{Dr. Juanita Gonzalez-Uribe}}}, \href{https://www.lse.ac.uk/finance/people/faculty/Agrawal}{\textcolor{myblue}{Dr. Ashwini Agrawal}} \vspace{-0.5pt}
-            
-    %         \resumeItem{\href{https://core.digitary.net/sharelink/b009271a-3cd9-499b-b586-512c77e0939f/60b1e44d-0c40-45eb-ab04-c857c9162099}{\textcolor{myblue}{Transcript}}}
-    %     \resumeItemListEnd
-    \resumeSubheading
-      {Research Assistant, \normalfont \small (\href{https://discovery.nus.edu.sg/18110-poorya-kabir/about}{\textcolor{myblue}{Prof. Poorya Kabir}}, National University of Singapore (NUS))}{\normalfont Feb 2023 \textbf{--} May 2023}{}{}\vspace{-4.5mm}
-        \resumeItemListStart
-            \resumeItem{Studied the effect of Medicaid expansion on households' participation in stock market and holding risky assets}
-            % by investigating several survey data and implementing econometric models to explain this effect.}
-            % \resumeItem{Supervisor: \href{https://discovery.nus.edu.sg/18110-poorya-kabir/about}{\textit{\textcolor{myblue}{Prof. Poorya Kabir}}}}
-        \resumeItemListEnd
-    \resumeSubheading
-      {Algorithmic Trading Intern, \normalfont \small \href{https://www.daneshsolutions.ir/en/}{Danesh Co.}}{\normalfont Jun 2022 \textbf{--} Sep 2022}
-      {}{}\vspace{-4.5mm}
-        \resumeItemListStart
-            \resumeItem{Implemented trading algorithms based on the sentiments of social media comments related to the stock market}
-            % \resumeItem{Supervisor: \href{https://sharif.edu/~fazli/}{\textit{\textcolor{myblue}{Prof. MohammadAmin Fazli}}}}
-        \resumeItemListEnd
-    \vspace{-1.5mm}
-  \resumeSubHeadingListEnd
+\projectentry{Generative AI and Creative Goods --- \link{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5152649}{Paper}}{Sep 2024 -- Jun 2025}
+\begin{cvitems}
+  \item Generated text embeddings from image titles and tags and estimated the effects of generative AI using difference-in-differences with propensity-score matching.
+  \item Trained and tuned a random forest model to predict image sales from embeddings and keywords. \advisor{Supervisor: \link{https://www.gsb.stanford.edu/faculty-research/faculty/samuel-goldberg}{Prof. Samuel Goldberg}.}
+\end{cvitems}
 
-%----------- Teaching EXPERIENCE -----------
+\newpage
+\section{Additional Experience}
+
+\entry
+  {Research Assistant, Tehran Institute for Advanced Studies}{Aug 2023 -- Aug 2024}
+  {\link{https://teias.institute/~seddighin/}{Prof. Masoud Seddighin}}
+  {Tehran, Iran}
+\begin{cvitems}
+  \item Established upper and lower distortion bounds for voting rules under public-spirited preferences.
+\end{cvitems}
+
+\entry
+  {Research Assistant, National University of Singapore}{Feb 2023 -- May 2023}
+  {\link{https://discovery.nus.edu.sg/18110-poorya-kabir/about}{Prof. Poorya Kabir}}
+  {Remote}
+\begin{cvitems}
+  \item Analyzed household survey data to study how Medicaid expansion affected stock-market participation and risky-asset holdings.
+\end{cvitems}
+
+\entry
+  {Algorithmic Trading Intern, Danesh Co.}{Jun 2022 -- Sep 2022}
+  {Quantitative research internship}
+  {Tehran, Iran}
+\begin{cvitems}
+  \item Developed sentiment-based trading signals from social-media discussions of the stock market.
+\end{cvitems}
+
+\section{Awards}
+
+\begin{cvitems}
+  \item \textbf{Silver Medal}, 51st International Chemistry Olympiad, Paris, France, 2019 (\link{https://drive.google.com/file/d/1EnjayIUpp0IMVcDCBvyIl645vrPMfKwv/view?usp=sharing}{certificate}).
+  \item \textbf{Gold Medal}, 28th Iran National Chemistry Olympiad, Tehran, Iran, 2018.
+\end{cvitems}
+
+\section{Selected Projects}
+
+\projectentry{\link{https://github.com/AmBadAl/financial-text-modeling-julia}{Financial Text Modeling in Julia}}{}
+\begin{cvitems}
+  \item Built a dependency-light Julia suite for sentiment analysis, classification, topic modeling, word embeddings, and SEC-document preprocessing, with automated tests and synthetic examples.
+\end{cvitems}
+
+\projectentry{\link{https://github.com/AmBadAl/crash-course-content-analysis}{Crash Course Content Analysis}}{}
+\begin{cvitems}
+  \item Developed a reproducible NLP pipeline for corpus statistics, part-of-speech analysis, and YAKE keyphrase extraction across educational-video transcripts.
+\end{cvitems}
+
+\projectentry{\link{https://github.com/AmBadAl/online-food-delivery-simulation}{Online Food Delivery Simulation}}{}
+\begin{cvitems}
+  \item Reimplemented a discrete-event simulation of priority queues, service capacity, timeouts, and utilization with reproducible scenarios and automated tests.
+\end{cvitems}
+
+\projectentry{\link{https://github.com/AmBadAl/Neuroeconomics-Essay}{Narratives and Herding: A Neuroeconomics Essay}}{}
+\begin{cvitems}
+  \item Proposed a testable hypothesis linking narrative processing and herding behavior through shared neural mechanisms.
+\end{cvitems}
 
 \section{Teaching Experience}
-  \vspace{3pt}
-  \resumeSubHeadingListStart
-    
-    \resumeSubheading
-      {Teaching Assistant, \normalfont Sharif University of Technology}{}{}{} \vspace{-6mm}
-        \resumeItemListStart
-            \resumeItem{\textbf{Game Theory}, Lecturers: \href{https://sharif.edu/~fazli/}{\textcolor{myblue}{Prof. MohammadAmin Fazli}} {/ \href{https://sites.google.com/view/masoudseddighin/masoud-seddighin?pli=1}{\textcolor{myblue}{Prof. Masoud Seddighin}}} \hspace{0.7cm} Spring 2023, Spring 2024}
-            \resumeItem{\textbf{Financial Economics}, Lecturer: Prof. Shiva Zamani \tabto{13.77cm} Spring 2022, Spring 2023}
-            \resumeItem{\textbf{Econometrics}, Lecturer: Dr. Narges Tahmasebi \tabto{16.2cm} Fall 2022}
-            \resumeItem{\textbf{Principles of Economics}, Lecturer: \href{http://gsme.sharif.edu/~m.nili}{\textcolor{myblue}{Prof. Masoud Nili}} \tabto{15.77cm} Spring 2022}
-            \resumeItem{\textbf{Microeconomics}, Lecturer: \href{https://gsme.sharif.edu/~saeed.tajrishy/}{\textcolor{myblue}{Dr. Saeed Tajrishy}} \tabto{16.2cm} Fall 2021}
-            \resumeItem{\textbf{Data Structures and Algorithms}, Lecturer: \href{https://sites.google.com/view/masoudseddighin/masoud-seddighin?pli=1}{\textcolor{myblue}{Prof. Masoud Seddighin}} \tabto{16.2cm} Fall 2021}
-        \resumeItemListEnd
 
-        
+\entry
+  {Teaching Assistant, Sharif University of Technology}{2021 -- 2024}
+  {Game Theory; Financial Economics; Econometrics; Principles of Economics; Microeconomics; Data Structures and Algorithms}
+  {}
 
-    % \vspace{15pt}
-    \resumeSubheading
-      {Chemistry Olympiad Teacher (part-time), \normalfont Sampad High Schools}{\normalfont \hspace{-2cm} Sep 2018 \textbf{--} Aug 2022}
-      % {\normalfont \hspace{0.2mm} Taught Chemistry Olympiad topics to students preparing for the Iranian National Chemistry Olympiad}{}
-      {}{} \vspace{-5mm}
-  \resumeSubHeadingListEnd
+\entry
+  {Chemistry Olympiad Teacher, Sampad High Schools}{2018 -- 2022}
+  {Part-time instructor}
+  {}
 
-%----------- AWARDS & ACHIEVEMENTS -----------
+\section{Technical Skills}
 
-\section{Awards \& Achievements}
-  \vspace{2pt}
-  \resumeSubHeadingListStart
-    \small{\item{
-        \textbf{Silver Medal}, $51^{st}$ International Chemistry Olympiad (IChO 2019), Paris, France, July 2019{ $|$  \emph{\href{https://drive.google.com/file/d/1EnjayIUpp0IMVcDCBvyIl645vrPMfKwv/view?usp=sharing}{\color{myblue} Certificate}}} \\ \vspace{3pt}
-        
-        \textbf{Gold Medal}, $28^{th}$ Iran National Chemistry Olympiad, Tehran, Iran, September 2018 \\ \vspace{3pt}
-    }}\vspace{-2mm}
-  \resumeSubHeadingListEnd
+\begin{multicols}{2}
+\small
+\textbf{Programming:} Python, Julia, R, C/C++, Java, Stata\\
+\textbf{Data and ML:} pandas, NumPy, scikit-learn, statsmodels, TensorFlow, PyTorch, GeoPandas
 
+\columnbreak
+\textbf{Tools:} Git, \LaTeX, Slurm, SQL, Redivis, Google Cloud APIs\\
+\textbf{Languages:} Persian (native), English (fluent)
+\end{multicols}
 
-%----------- PROJECTS -----------
-\section{Notable Projects and Essays}
-    \vspace{3pt}
-    \resumeSubHeadingListStart
-
-      \resumeProjectHeading
-        {\textbf{Neuroeconomics Essay:} Herding Behavior - Insights from Narrative Economics and Neuroeconomics $|$ \href{https://github.com/AmBadAl/Neuroeconomics-Essay}{\color{myblue}GitHub}}{}
-          \resumeItemListStart
-            \resumeItem{Discussed the role of narratives in driving herding behavior}
-            \resumeItem{Proposed a neuroeconomic hypothesis testing if the same brain regions process narratives and herding behavior}
-          \resumeItemListEnd
-    
-      \resumeProjectHeading
-        {\textbf{Econometrics Essay:} Interest Rate and GDP Effects on Different Sectors $|$ \href{https://github.com/AmBadAl/Econometrics-Project}{\color{myblue}GitHub}}{}
-          \resumeItemListStart
-            \resumeItem{Investigated the effects of interest rate and GDP on different sectors in the stock market}
-          \resumeItemListEnd
-          
-      \resumeProjectHeading
-        {\textbf{Macroeconomics Essay:} The Role of Macroeconomic Factors in Growth $|$ \href{https://github.com/AmBadAl/Macroeconomics-Project}{\color{myblue}GitHub}}{}
-          \resumeItemListStart
-            \resumeItem{Studied the impact of inflation and budget deficit on the productivity rate and the economic growth in Iran}
-          \resumeItemListEnd
-          
-      \resumeProjectHeading
-        {\textbf{Financial Machine Learning Project:} Financial NLP Models $|$ \href{https://github.com/AmBadAl/Financial-NLP-Models}{\color{myblue}GitHub}}{}
-          \resumeItemListStart
-            \resumeItem{Implemented NLP models of the \enquote{Stefan Jensen, Machine Learning for Trading, 2020} book in Julia}
-          \resumeItemListEnd
-
-    \resumeProjectHeading
-        {\textbf{Systems Analysis and Design Project:} Diabetes Prediction Application $|$ \href{https://github.com/AmBadAl/Diabetes}{\color{myblue}GitHub}}{}
-          \resumeItemListStart
-            \resumeItem{Machine Learning model for predicting diabetes based on personal and health-related features}
-          \resumeItemListEnd
-          
-    \resumeProjectHeading
-        {\textbf{Information Retrieval Project:} Retrieval System for Semantic Scholar $|$ \href{https://github.com/sudoparsa/information-retrieval}{\color{myblue}GitHub}}{}
-          \resumeItemListStart
-            \resumeItem{Implemented a retrieval system using NLP models to query and classify Semantic Scholar papers}
-          \resumeItemListEnd
-
-    % \resumeProjectHeading
-    %     {\textbf{Machine Learning Course} $|$ \href{https://github.com/AmBadAl/ML_Course.git}{\color{myblue}GitHub}}{}
-    %       \resumeItemListStart
-    %         \resumeItem{My solutions to the “Machine Learning” course at Sharif University of Technology (Fall 2022)}
-    %       \resumeItemListEnd
-    
-    \resumeProjectHeading
-        {\textbf{Advanced Programming Project:} Shopping Application $|$ \href{https://github.com/AdvProg2020/Project_team-30}{\color{myblue}GitHub}}{}
-          \resumeItemListStart
-            \resumeItem{Designed and developed a shopping application using Java programming language.}
-          \resumeItemListEnd
-          
-          
-    \resumeSubHeadingListEnd
-
-
-%----------- ONLINE COURSES -----------
-
-\section{Online Courses}
-\vspace{2pt}
-
-  % \resumeSubHeadingListStart
-
-  %   \item{
-  %       Game Theory, Stanford University{ $|$ \emph{\href{https://www.coursera.org/account/accomplishments/certificate/MXNNF9FM8FW8}{\color{myblue}Certificate}}}
-  %       } \\ \vspace{-1mm}
-    
-  %   \item{
-  %       Game Theory II: Advanced Applications, Stanford University{ $|$ \emph{\href{https://www.coursera.org/account/accomplishments/certificate/9ELAJUKJUGMS}{\color{myblue}Certificate}}}
-  %       } \\ \vspace{-1mm}
-
-  %   \item{
-  %       Narrative Economics, Yale University{ $|$ \emph{\href{https://www.coursera.org/account/accomplishments/certificate/FU4PEDLU3TPQ}{\color{myblue}Certificate}}}
-  %       } \\ \vspace{-1mm}
-
-  %   \item{
-  %       \textbf{Financial Markets}, Yale University{ $|$ \emph{\href{https://www.coursera.org/account/accomplishments/certificate/2SVVEQSAY5AJ}{\color{myblue}Certificate}}}
-  %       } \\ \vspace{-1mm}
-
-  %   \item{
-  %       \textbf{The Global Financial Crisis}, Yale University{ $|$ \emph{\href{https://www.coursera.org/account/accomplishments/certificate/XMYAUZJA9ZGX}{\color{myblue}Certificate}}}
-  %       } \\ \vspace{-1mm}
-
-  %   \item{
-  %       \textbf{Financial Engineering and Risk Management (1 of 5 courses)}, Columbia University{ $|$ \emph{\href{https://www.coursera.org/account/accomplishments/certificate/QLBUD9S4YKLD}{\color{myblue}Certificate}}}
-  %       } \\ \vspace{-1mm}
-    
-  %   \item{
-  %       \textbf{Machine Learning and RL in Finance (2 of 4 courses)}, New York University{ $|$ \emph{\href{https://www.coursera.org/account/accomplishments/certificate/H99F4C8AEA9G}{\color{myblue}Certificate}}}
-  %       } \\ \vspace{-1mm}
-
-  %   \item{
-  %       \textbf{Decentralized Finance (DeFi) (4 of 4 courses)}, Duke University{ $|$ \emph{\href{https://www.coursera.org/account/accomplishments/specialization/certificate/GMBF8CZDH7DL}{\color{myblue}Certificate}}}
-  %       } \\ \vspace{-1mm}
-
-  %   \item{
-  %       \textbf{Behavioral Finance}, Duke University{ $|$ \emph{\href{https://www.coursera.org/account/accomplishments/certificate/ZCM925CQBWL8}{\color{myblue}Certificate}}}
-  %       } \\ \vspace{-1mm}
-
-  %   \resumeSubHeadingListEnd
-
-    \begin{tabularx}{\textwidth}{@{\hspace{4pt}}m{12cm} > {\centering\arraybackslash}m{4.5cm} > {\centering\arraybackslash}m{2cm}}
-      \textbf{Course}  & \textbf{University} & \\
-      \hline
-      \vspace{2pt}
-        \textbf{Game Theory} & Stanford University & \emph{\href{https://www.coursera.org/account/accomplishments/certificate/MXNNF9FM8FW8}{\color{myblue}Certificate}} \\
-        \textbf{Game Theory II: Advanced Applications} &  Stanford University & \emph{\href{https://www.coursera.org/account/accomplishments/certificate/9ELAJUKJUGMS}{\color{myblue}Certificate}} \\
-        \textbf{Narrative Economics} & Yale University & \emph{\href{https://www.coursera.org/account/accomplishments/certificate/FU4PEDLU3TPQ}{\color{myblue}Certificate}} \\
-        \textbf{Financial Markets} &  Yale University & \emph{\href{https://www.coursera.org/account/accomplishments/certificate/2SVVEQSAY5AJ}{\color{myblue}Certificate}} \\
-        \textbf{The Global Financial Crisis} &  Yale University & \emph{\href{https://www.coursera.org/account/accomplishments/certificate/XMYAUZJA9ZGX}{\color{myblue}Certificate}}\\
-        \textbf{Financial Engineering and Risk Management} (1 of 5 courses) &  Columbia University & \emph{\href{https://www.coursera.org/account/accomplishments/certificate/QLBUD9S4YKLD}{\color{myblue}Certificate}} \\
-        \textbf{Machine Learning and RL in Finance} (2 of 4 courses) & New York University & \emph{\href{https://www.coursera.org/account/accomplishments/certificate/H99F4C8AEA9G}{\color{myblue}Certificate}}\\
-        \textbf{Decentralized Finance (DeFi)} (4 of 4 courses) & Duke University & \emph{\href{https://www.coursera.org/account/accomplishments/specialization/certificate/GMBF8CZDH7DL}{\color{myblue}Certificate}} \\
-        \textbf{Behavioral Finance} &  Duke University & \emph{\href{https://www.coursera.org/account/accomplishments/certificate/ZCM925CQBWL8}{\color{myblue}Certificate}}
-    \end{tabularx}
-
-
-% \resumeSubHeadingListStart
-
-% \resumeProjectHeading
-% {\textbf{Sharif University of Technology}}{}
-%   \resumeItemListStart
-%     \resumeItem{\textbf{Math:} Calculus I-II, Linear Algebra, Differential Equations, Probability and Statistics, Numerical Computation}
-%     \resumeItem{\textbf{Computer Science:} Advanced Programming, Discrete Structures, Data Structures and Algorithms, Design of Algorithms, Game Theory, Computer Simulation, Signals and Systems, Advanced Information Retrieval, Machine Learning (Graduate), Social and Economic Networks (Graduate), Theory of Languages and Automata
-%     % , Theory of Languages and Automata, Computer Simulation, Signals and Systems
-%     }
-%     \resumeItem{\textbf{Economics:} Microeconomics, Macroeconomics, Econometrics, Intro to IO, Public Economics, Neuroeconomics}
-%     \resumeItem{\textbf{Finance:} Financial Economics, Financial Machine Learning (Graduate), Financial Engineering (Graduate)}
-%   \resumeItemListEnd
-
-% \resumeProjectHeading
-% {\textbf{London School of Economics and Political Science (LSE)}}{}
-%   \resumeItemListStart
-%     \resumeItem{\textbf{Finance}: Analysis and Management of Financial Risk (FM202), Advanced Corporate Finance (FM350)}
-%   \resumeItemListEnd
-  
-% \resumeProjectHeading
-% {\textbf{Coursera} (Online Courses) $|$ \href{https://www.coursera.org/user/c903ed0f7bb380afb4ccad46f5bc0fc0}{\color{myblue}Profile}}{}
-%   \resumeItemListStart
-%     \resumeItem{Game Theory (Stanford University), Game Theory II: Advanced Applications (Stanford University), Narrative Economics (Yale University), Financial Markets (Yale University), The Global Financial Crisis (Yale University), Financial Engineering and Risk Management (Columbia University), Machine Learning and RL in Finance (New York University), Decentralized Finance (DeFi) (Duke University), Behavioral Finance (Duke University)}
-%   \resumeItemListEnd
-    
-% \resumeSubHeadingListEnd
-
-
-
-%----------- SKILLS -----------
-
-\section{Skills}
-  \vspace{-3pt}
-  \resumeSubHeadingListStart
-    \begin{multicols}{2}
-        \small{\item{
-            \textbf{Programming: }{Python, Julia, R, C/C++, Java, STATA} \\ \vspace{3pt}
-            \textbf{Packages: }{Pandas, NumPy, Scikit-learn, Statsmodels, TensorFlow, PyTorch, GeoPandas, Google Cloud API}
-            % \\ \vspace{3pt}
-        }}
-    \columnbreak % optional: forces a break between columns
-        \small{\item {
-            \textbf{Technologies: }{Git, \LaTeX{}, Slurm, SQL, Redivis} \\ \vspace{3pt}
-            \textbf{Languages: }{Persian (Native), English (Fluent)}
-        }}
-    \end{multicols}
-  \resumeSubHeadingListEnd
-
-
-% %----------- RELEVANT COURSEWORK -----------
-
-% \section{Relevant Coursework}
-% \begin{tabularx}{\textwidth}{@{\hspace{4pt}}m{6.8cm} >{\centering\arraybackslash}m{1.9cm}|@{\hspace{4pt}}m{8.4cm}  >{\centering\arraybackslash}m{1.8cm}}
-%   \textbf{Economics}  & \textbf{Grade} & \textbf{Finance}  & \textbf{Grade} \\
-%   \hline
-%   Principles of Economics           & 20.0/20.0 & 
-%   Financial Economics               & 19.2/20.0 \\
-%   Microeconomics                    & 20.0/20.0 & 
-%   Financial Machine Learning \textcolor{myblue}{(Graduate)} & 18.8/20.0 \\
-%   Macroeconomics                    & 19.4/20.0 & 
-%   Analysis and Management of Financial Risk \textcolor{myblue}{(LSE)} & A+ \\
-%   Intro to Industrial Organization           & 17.9/20.0 &
-%   Advanced Corporate Finance \textcolor{myblue}{(LSE)}  & A+ \\
-%   Econometrics                      & 20.0/20.0 & 
-%   Financial Engineering \textcolor{myblue}{(Graduate)}  & 17.3/20.0 \\
-%   Neuroeconomics \textcolor{myblue}{(Graduate)} & 20.0/20.0 \\
-%   Public Economics                  & 18.6/20.0 
-% \end{tabularx}
-
-% \vspace{2.5mm}
-
-% \begin{tabularx}{\textwidth}{@{\hspace{4pt}}m{6.8cm} >{\centering\arraybackslash}m{1.9cm}|@{\hspace{4pt}}m{8.4cm}  >{\centering\arraybackslash}m{1.8cm}}
-%   \textbf{Mathematics and Statistics}  & \textbf{Grade} & \textbf{Computer Science}  & \textbf{Grade} \\
-%   \hline
-%   General Math 1                    & 15.1/20.0 &
-%   Advanced Programming              & 18.4/20.0 \\
-%   General Math 2                    & 17.5/20.0 &
-%   Data Structures and Algorithms    & 20.0/20.0 \\
-%   Linear Algebra                    & 20.0/20.0 &
-%   Design of Algorithms              & 18.2/20.0 \\
-%   Differential Equations            & 19.3/20.0 &
-%   Game Theory                       & 19.5/20.0 \\
-%   Engineering Probability and Statistics & 17.6/20.0 &
-%   Machine Learning \textcolor{myblue}{(Graduate)} & 20.0/20.0 \\
-%   Numerical Computation             & 17.2/20.0 &
-%   Social and Economic Networks \textcolor{myblue}{(Graduate)} & 15.6/20.0
-% \end{tabularx}   \vspace{-3.5mm}
-
-
-% %----------- Seminars -----------
-% \section{Seminars}
-%     \vspace{3pt}
-%     \resumeSubHeadingListStart
-    
-%     \resumeProjectHeading
-%         {\textbf{Neuroeconomics: Herding in Financial Behavior} $|$ \emph{\href{https://drive.google.com/file/d/1ULsAOtnoy6Rp03bKrekj05GfIqmZVwhs/view?usp=sharing}{\color{myblue}Link}}}{}
-
-%     \resumeProjectHeading
-%         {\textbf{Social and Economic Networks: Eliciting Social Knowledge for Creditworthiness Assessment} $|$ \emph{\href{https://drive.google.com/file/d/1ahm3ObUH16FoCLEZzefzrFd4VvRiFRmk/view?usp=sharing}{\color{myblue}Link}}}{}
-
-%     \resumeProjectHeading
-%         {\textbf{Game Theory: Airline Pricing Models} $|$ \emph{\href{https://drive.google.com/drive/folders/1QHaSQZsI9tIiapy_WtGoln0B2r7l9tR2?usp=sharing}{\color{myblue}Link}}}{}
-    
-%     \resumeSubHeadingListEnd
-
-
-%----------- Tests -----------
-
-%\section{Tests}
- % \vspace{2pt}
-  %\resumeSubHeadingListStart
-   % \small{\item{
-     %   \textbf{International English Language Testing System (IELTS): }{Overall Score: 8.0/9.0 (CEFR: C1) $|$ \emph{\href{https://drive.google.com/file/d/186E1lylGn7qkjAcrT3hhUaUGKavLJMyU/view?usp=sharing}{\color{myblue}Certificate}}} \\ \vspace{3pt}
-    %}}
-  %\resumeSubHeadingListEnd
-
-
-%----------- CERTIFICATES -----------
-
-% \section{Certificates}
-  % \resumeSubHeadingListStart
-    
-    % \resumeOrganizationHeading
-      % {Procter \& Gamble VIA Certificate Program}{Feb 2022}{Business Skills, Data and Digital Skills, Project Management and Personal Productivity}
-    
-  % \resumeSubHeadingListEnd
-
-
-
-%----------- ORGANIZATIONS -----------
-
-% \section{Organizations}
-  % \resumeSubHeadingListStart
-    
-    % \resumeOrganizationHeading
-      % {Institute of Electrical and Electronics Engineers (IEEE)}{Feb 2022 -- Present}{Student Member}
-    
-  % \resumeSubHeadingListEnd
-
-
-
-%----------- HOBBIES -----------
-
-% \section{Hobbies}
-  % \resumeSubHeadingListStart
-    % \small{\item{Swimming, Fitness, Eight-ball}}
-  % \resumeSubHeadingListEnd
-
-
-
-%----------- REFERENCES -----------
-
-% \section{References}
-  % \resumeSubHeadingListStart
-    
-  % \resumeSubHeadingListEnd
-
-
-
-%-------------------------------------------
 \end{document}
