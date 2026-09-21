@@ -1,14 +1,20 @@
 \documentclass[letterpaper,11pt]{article}
 
-\usepackage[T1]{fontenc}
+% Original Overleaf typography (cfacf62).
 \usepackage[english]{babel}
-\usepackage[margin=0.58in]{geometry}
+\usepackage[empty]{fullpage}
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1in}
+\addtolength{\topmargin}{-0.5in}
+\addtolength{\textheight}{1.0in}
 \usepackage{enumitem}
 \usepackage{tabularx}
 \usepackage{titlesec}
 \usepackage[dvipsnames]{xcolor}
 \usepackage[hidelinks]{hyperref}
 \usepackage{multicol}
+\usepackage{fontawesome}
 
 \input{glyphtounicode}
 \pdfgentounicode=1
@@ -26,85 +32,95 @@
 \setlength{\parindent}{0pt}
 \setlength{\tabcolsep}{0pt}
 \setlength{\multicolsep}{0pt}
-\linespread{1.05}
+\linespread{1}
 \raggedbottom
 \raggedright
 \urlstyle{same}
 
 \titleformat{\section}
-  {\vspace{-2pt}\color{cvblue}\scshape\raggedright\large}
+  {\color{cvblue}\scshape\raggedright\large}
   {}{0pt}{}[\color{cvblue}\titlerule]
-\titlespacing*{\section}{0pt}{9pt}{6pt}
+% Match the original compact section gaps without its nested-list offsets.
+\titlespacing*{\section}{0pt}{7pt}{6pt}
 
 \newcommand{\entry}[4]{
+  \par\addvspace{4pt}
   \begin{tabularx}{\textwidth}{@{}Xr@{}}
-    \textbf{#1} & #2 \\
-    \textit{#3} & \textit{#4}
-  \end{tabularx}\vspace{0pt}
+    \normalsize\textbf{#1} & \normalsize #2 \\[1pt]
+    \textit{\small #3} & \textit{\small #4}
+  \end{tabularx}\par\vspace{-3pt}
 }
 
-\newcommand{\projectentry}[2]{
+\newlength{\projectgap}
+\setlength{\projectgap}{4.5pt}
+% Optional leading gap keeps section-to-entry spacing independent of item gaps.
+\newcommand{\projectentry}[3][\projectgap]{
+  \par\addvspace{#1}
   \begin{tabularx}{\textwidth}{@{}Xr@{}}
-    \textbf{#1} & #2
-  \end{tabularx}\vspace{-2pt}
+    \normalsize\textbf{#2} & \normalsize #3
+  \end{tabularx}\vspace{-1pt}
 }
 
-\newenvironment{cvitems}
-  {\begin{itemize}[leftmargin=0.18in,itemsep=0.75pt,topsep=2.5pt,parsep=0.25pt,partopsep=0pt]}
-  {\end{itemize}\vspace{0pt}}
+\newenvironment{cvitems}[1][3pt]
+  {\small\begin{itemize}[leftmargin=0.55cm, itemsep=3pt, parsep=0pt, topsep=#1]}
+  {\end{itemize}\vspace{-5pt}}
 
 \newcommand{\advisor}[1]{%
-  \vspace{-1pt}\hspace{0.18in}\textit{#1}\par\vspace{2pt}%
+  \par\vspace{3pt}\hspace{0.55cm}{\small\textit{#1}}\par\vspace{0pt}%
 }
 \newcommand{\link}[2]{\href{#1}{\textcolor{cvblue}{#2}}}
 
 \begin{document}
+\enlargethispage{14pt}
 
 \begin{center}
-  {\Huge\textbf{Amirreza Bagheridelouee}}\\[5pt]
+  {\Huge\scshape\textbf{Amirreza Bagheridelouee}}\\[5pt]
   \small
-  \href{tel:+16504444155}{+1 (650) 444-4155}
-  \enspace$|$\enspace
-  \href{mailto:amirbd@wharton.upenn.edu}{amirbd@wharton.upenn.edu}
-  \enspace$|$\enspace
-  \link{https://ambadal.github.io/}{Website}
-  \enspace$|$\enspace
-  \link{https://www.linkedin.com/in/amirreza-bagheridelouee-265557146}{LinkedIn}
-  \enspace$|$\enspace
-  \link{https://github.com/AmBadAl}{GitHub}
-  \enspace$|$\enspace
-  Philadelphia, PA
+  \faMobile\hspace{0.5pt} \href{tel:+16504444155}{+1 (650) 444-4155}
+   $|$
+  \faAt\hspace{0.5pt} \href{mailto:amirbd@wharton.upenn.edu}{amirbd@wharton.upenn.edu}
+   $|$
+  \faGlobe\hspace{0.5pt} \link{https://ambadal.github.io/}{Website}
+   $|$
+  \faLinkedinSquare\hspace{0.5pt} \link{https://www.linkedin.com/in/amirreza-bagheridelouee-265557146}{LinkedIn}
+   $|$
+  \faGithub\hspace{0.5pt} \link{https://github.com/AmBadAl}{GitHub}
+   $|$
+  \faMapMarker\hspace{0.5pt} Philadelphia, PA
 \end{center}
-\vspace{-8pt}
+\vspace{-16pt}
 
 \section{Education}
+\begingroup
+\setlist[itemize]{itemsep=3pt}
 
 \entry
   {Stanford Graduate School of Business}{Sep 2024 -- Jun 30, 2026}
   {Predoctoral Research Fellow (Non-matriculated Student); \link{https://drive.google.com/file/d/1kb_k2UNL9kZQXFPfv0aMRYIPIigM8STo/view?usp=sharing}{Transcript}}
   {Stanford, CA}
-\begin{cvitems}
-  \item \textbf{Graduate coursework:} Microeconomic Analysis I; Econometrics I--III; Game Theory, Data Science \& AI; Reinforcement Learning; Convex Optimization I.
+\begin{cvitems}[4pt]
+  \item \textbf{Coursework:} Microeconomic Analysis I (MGTECON 600); Intermediate Econometrics I--III (ECON 270--272); Game Theory, Data Science \& AI (MS\&E 233); Reinforcement Learning (CS 234); Convex Optimization I (EE 364A).
 \end{cvitems}
 
 \entry
   {Sharif University of Technology}{Sep 2019 -- Jul 2024}
-  {B.Sc. in Computer Engineering, Minor in Economics; GPA: 3.90/4.00}
+  {B.Sc. in Computer Engineering, Minor in Economics; GPA: 3.90/4.00; \link{https://drive.google.com/file/d/1WJSjQwN7rH9XDqTEst-5WVKbvuHeijN_/view?usp=sharing}{Transcript}}
   {Tehran, Iran}
-\begin{cvitems}
-  \item \textbf{Thesis:} \link{https://drive.google.com/drive/folders/1hKUnhgeF74_QdofnvVOsgK7rcKDeilMH?usp=sharing}{Metric Distortion Under Public-Spirited Voting}.
-  \item \textbf{Selected coursework:} Machine Learning; Social and Economic Networks; Econometrics; Industrial Organization; Financial Machine Learning; Financial Engineering.
+\begin{cvitems}[4pt]
+  \item \textbf{Thesis:} \link{https://drive.google.com/file/d/1PQK5nqoHnSbwBZNsM1jnAdzhP37o13iG/view?usp=sharing}{Metric Distortion Under Public-Spirited Voting}.
+  \item \textbf{Selected coursework:} Differential Equations; Linear Algebra; Numerical Computation; Artificial Intelligence; Game Theory; Machine Learning; Social and Economic Networks; Advanced Information Retrieval; Design of Algorithms; Financial Machine Learning; Financial Engineering; Theory of Languages and Automata; Computer Simulation.
 \end{cvitems}
 
 \entry
   {London School of Economics and Political Science}{Jul 2023 -- Aug 2023}
-  {Summer School; Financial Risk Analysis and Advanced Corporate Finance; \link{https://drive.google.com/file/d/1XI6XzQQCjcciT4FuboTKURwQtCJLdq4m/view?usp=sharing}{Transcript}}
+  {Summer School; Analysis and Management of Financial Risk; Advanced Corporate Finance; \link{https://drive.google.com/file/d/1XI6XzQQCjcciT4FuboTKURwQtCJLdq4m/view?usp=sharing}{Transcript}}
   {London, UK}
 
+\par\endgroup
 \section{Publications}
 
-\small
-\textbf{Amirreza Bagheridelouee}, Marzieh Nilipour, Masoud Seddighin, and Maziar Shamsipour.
+\normalsize
+\textbf{Amirreza Bagheridelouee}, Marzie Nilipour, Masoud Seddighin, and Maziar Shamsipour.
 ``Metric Distortion Under Public-Spirited Voting.''
 \textit{Proceedings of the 23rd International Conference on Autonomous Agents and Multiagent Systems}
 (\link{https://dl.acm.org/doi/10.5555/3635637.3663088}{AAMAS 2024}), pp. 2144--2146.
@@ -124,40 +140,41 @@
 
 \projectentry{FIFA Ticketing}{Sep 2025 -- Jun 30, 2026}
 \begin{cvitems}
-  \item Collected and analyzed marketplace and Fifachain transaction data for FIFA Collect, including 2026 World Cup ticket-related digital assets.
+  \item Scraped and analyzed 1M+ observations from FIFA Collectibles, World Cup 2026 tickets, and Fifachain transactions.
+  \item Combined marketplace and blockchain data to study demand and trading in FIFA NFT and ticketing markets.
 \end{cvitems}
 \advisor{Supervisor: \link{https://gsb-faculty.stanford.edu/paulo-somaini/}{Prof. Paulo Somaini}.}
 
-\projectentry{Congestion Pricing and Carpooling}{Jul 2025 -- Jun 30, 2026}
+\projectentry{Congestion Pricing and Carpooling --- \link{https://www.nber.org/papers/w34261}{Paper}}{Jul 2025 -- Jun 30, 2026}
 \begin{cvitems}
-  \item Built trip-level datasets for Manhattan's central business district using Replica and Google Maps APIs to study carpooling responses to congestion pricing.
-  \item Synthesized evidence on how parking fees and congestion charges affect carpooling (\link{https://www.nber.org/papers/w34261}{paper}).
+  \item Built 1M+ Manhattan trip observations from Replica and Google Maps API to study congestion-pricing responses.
+  \item Built a Manhattan car-count dataset from 25,000+ hours of unstructured video footage.
+  \item Reviewed research on how congestion pricing and parking fees affect carpooling.
 \end{cvitems}
 \advisor{Supervisor: \link{https://web.stanford.edu/~ost/}{Prof. Michael Ostrovsky}.}
 
 \projectentry{Power Plants, Transmission Lines, and Data Centers}{Jul 2025 -- Sep 2025}
 \begin{cvitems}
-  \item Developed a PowerModels.jl model to predict electricity generation from bid data and network constraints.
-  \item Diagnosed inconsistencies between ERCOT SCED bid data and realized generation.
+  \item Developed a PowerModels.jl model to predict electricity generation from bid data and transmission-network constraints.
+  \item Compared ERCOT-SCED bids with realized generation and diagnosed inconsistencies in the energy-market data.
 \end{cvitems}
 \advisor{Supervisors: \link{https://web.stanford.edu/~ayurukog/}{Prof. Ali Yurukoglu} and \link{https://gsb-faculty.stanford.edu/omer-karaduman/}{Prof. Omer Karaduman}.}
 
 \projectentry{Port Substitution and Congestion in the Container Shipping Industry}{Sep 2024 -- Jun 2025}
 \begin{cvitems}
-  \item Built a ship-identity resolution algorithm to correct missing and inconsistent vessel identifiers.
-  \item Developed reproducible pipelines to clean, merge, and benchmark customs-import and product datasets.
-  \item Estimated trucking costs from fuel-price and wage variation.
+  \item Resolved vessel identities across 150M+ maritime AIS and Panjiva observations using a ship-matching algorithm.
+  \item Built reproducible customs and product-data pipelines and estimated trucking costs from fuel prices and wages.
 \end{cvitems}
 \advisor{Supervisors: \link{https://shoshanavasserman.com/}{Prof. Shoshana Vasserman} and \link{https://stephenredding.github.io/}{Prof. Stephen Redding}.}
 
-\newpage
 \projectentry{Generative AI and Creative Goods --- \link{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5152649}{Paper}}{Sep 2024 -- Jun 2025}
 \begin{cvitems}
-  \item Generated text embeddings from image titles and tags and estimated the effects of generative AI using difference-in-differences with propensity-score matching.
-  \item Trained and tuned a random forest model to predict image sales from embeddings and keywords.
+  \item Created image-title and tag embeddings and used them to predict image sales with a tuned random-forest model.
+  \item Estimated generative-AI treatment effects using propensity-score matching and difference-in-differences.
 \end{cvitems}
 \advisor{Supervisor: \link{https://www.gsb.stanford.edu/faculty-research/faculty/samuel-goldberg}{Prof. Samuel Goldberg}.}
 
+\newpage
 \section{Additional Experience}
 
 \entry
@@ -173,7 +190,7 @@
   {\link{https://discovery.nus.edu.sg/18110-poorya-kabir/about}{Prof. Poorya Kabir}}
   {Remote}
 \begin{cvitems}
-  \item Analyzed household survey data to study how Medicaid expansion affected stock-market participation and risky-asset holdings.
+  \item Studied Medicaid expansion and household stock-market participation and risky-asset holdings using survey data.
 \end{cvitems}
 
 \entry
@@ -192,40 +209,45 @@
 \end{cvitems}
 
 \section{Selected Projects}
+\begingroup
+\setlength{\projectgap}{9pt}
 
-\projectentry{\link{https://github.com/AmBadAl/financial-text-modeling-julia}{Financial Text Modeling in Julia}}{}
+\projectentry[0pt]{\link{https://github.com/AmBadAl/financial-text-modeling-julia}{Financial Text Modeling in Julia}}{}
 \begin{cvitems}
-  \item Built a dependency-light Julia suite for sentiment analysis, classification, topic modeling, word embeddings, and SEC-document preprocessing, with automated tests and synthetic examples.
+  \item Built a Julia toolkit for financial-text classification, sentiment analysis, topic modeling, and embeddings.
 \end{cvitems}
 
 \projectentry{\link{https://github.com/AmBadAl/crash-course-content-analysis}{Crash Course Content Analysis}}{}
 \begin{cvitems}
-  \item Developed a reproducible NLP pipeline for corpus statistics, part-of-speech analysis, and YAKE keyphrase extraction across educational-video transcripts.
+  \item Built an NLP pipeline to analyze vocabulary, parts of speech, and keyphrases in educational-video transcripts.
 \end{cvitems}
 
 \projectentry{\link{https://github.com/AmBadAl/online-food-delivery-simulation}{Online Food Delivery Simulation}}{}
 \begin{cvitems}
-  \item Reimplemented a discrete-event simulation of priority queues, service capacity, timeouts, and utilization with reproducible scenarios and automated tests.
+  \item Simulated food-delivery queues to study service capacity, customer timeouts, and utilization.
 \end{cvitems}
 
 \projectentry{\link{https://github.com/AmBadAl/Neuroeconomics-Essay}{Narratives and Herding: A Neuroeconomics Essay}}{}
 \begin{cvitems}
-  \item Proposed a testable hypothesis linking narrative processing and herding behavior through shared neural mechanisms.
+  \item Proposed a neuroeconomic hypothesis linking narrative processing and herding behavior.
 \end{cvitems}
 
+\par\endgroup
 \section{Teaching Experience}
 
-\entry
-  {Teaching Assistant, Sharif University of Technology}{2021 -- 2024}
-  {Game Theory; Financial Economics; Econometrics; Principles of Economics; Microeconomics; Data Structures and Algorithms}
-  {}
+\projectentry[0pt]{Teaching Assistant, Sharif University of Technology}{2021 -- 2024}
+\begin{cvitems}
+  \item Led TA problem-solving sessions, designed assignments and lectures, and graded homework.
+  \item \textbf{Courses:} Game Theory; Financial Economics; Econometrics; Principles of Economics; Microeconomics; Data Structures and Algorithms.
+\end{cvitems}
 
+\par\vspace{5pt}
 \entry
   {Chemistry Olympiad Teacher, Sampad High Schools}{2018 -- 2022}
   {Part-time instructor}
   {}
 
-\enlargethispage{3\baselineskip}
+
 \section{Technical Skills}
 
 \begin{multicols}{2}

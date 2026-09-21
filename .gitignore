@@ -2,6 +2,7 @@
 *.fdb_latexmk
 *.fls
 *.log
+main.pdf
 *.out
 *.synctex.gz
 output/
